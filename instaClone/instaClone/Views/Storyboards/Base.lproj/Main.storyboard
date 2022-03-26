@@ -61,13 +61,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iah-K0-LLD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="895"/>
+            <point key="canvasLocation" x="500" y="895"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="3gl-Oj-F7r">
             <objects>
                 <viewController id="Pi3-5S-Zwi" customClass="CameraViewController" customModule="instaClone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="q1w-gv-9Pv" customClass="Ca">
+                    <view key="view" contentMode="scaleToFill" id="q1w-gv-9Pv" userLabel="Camera View Controller">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="GZv-07-0Ck"/>
@@ -147,7 +147,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHv-8c-JPv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="124"/>
+            <point key="canvasLocation" x="500" y="124"/>
         </scene>
         <!--add-->
         <scene sceneID="4yL-Wb-MtH">
