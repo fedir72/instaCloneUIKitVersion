@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let fld = UITextField()
         fld.placeholder = "Password..."
+        fld.isSecureTextEntry =  true
         fld.returnKeyType = .continue
         fld.leftViewMode = .always
         fld.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
