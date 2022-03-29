@@ -176,6 +176,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func didTapLoginButton() {
+        
         passwordTextField.resignFirstResponder()
         usernameTextField.resignFirstResponder()
         guard let usernameEmail = usernameTextField.text, !usernameEmail.isEmpty,
@@ -183,7 +184,33 @@ class LoginViewController: UIViewController {
             return
         }
         //login functionality
+        var username: String?
+        var email: String?
+        if usernameEmail.contains("@"),usernameEmail.contains(".") {
+            //email
+            email = usernameEmail
+        }else{
+            //username
+            username = usernameEmail
+        }
+        
+        AuthManager.shared.loginUser(userName: username,email: email,password: pass) { succes in
+            DispatchQueue.main.async {
+                if succes {
+                    //user logged in
+                    self.dismiss(animated: true)
+                }else{
+                    //error occured
+                    let alert = UIAlertController(title: "LOG IN ERROR",
+                                                  message: "We were unable to log you in.",
+                                                  preferredStyle: .alert)
+                    alert.addAction(.init(title: "Dismiss", style: .cancel))
+                    self.present(alert, animated: true)
+            }
+        }
+      }
     }
+    
     @objc private func didTapTermsButton() {
         guard let url = URL(string: "https://help.instagram.com/581066165581870") else {return}
         let vc = SFSafariViewController(url: url)
@@ -196,8 +223,9 @@ class LoginViewController: UIViewController {
         present(vc, animated: true, completion: nil)
     }
     @objc private func didTapcreateAccountButton() {
-        let vc = RegistrationViewController()
-        present(vc, animated: true, completion: nil)
+        let contr = RegistrationViewController()
+        contr.title = "Create account"
+        present(UINavigationController(rootViewController: contr), animated: true, completion: nil)
     }
     
 }
@@ -212,4 +240,5 @@ extension LoginViewController: UITextFieldDelegate {
         }
         return true
     }
-}
+  }
+

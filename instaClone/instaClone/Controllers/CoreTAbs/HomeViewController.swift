@@ -13,7 +13,11 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+//        do {
+//            try Auth.auth().signOut()
+//        }catch{
+//            print("failed to sign out")
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
