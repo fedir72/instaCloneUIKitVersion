@@ -189,8 +189,8 @@
 		BD1C89A727EF4A3200292DD1 /* Otnhers */ = {
 			isa = PBXGroup;
 			children = (
-				BD1C89AD27EF4AB900292DD1 /* PostViewController.swift */,
 				BD1C89B127EF4B1500292DD1 /* SettingsViewController.swift */,
+				BD1C89AD27EF4AB900292DD1 /* PostViewController.swift */,
 				BD1C89B527EF4B6100292DD1 /* SearchViewController.swift */,
 				BD1C89B927EF4BC300292DD1 /* PostEditorViewController.swift */,
 				BD1C89B327EF4B3A00292DD1 /* ListViewController.swift */,

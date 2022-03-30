@@ -134,7 +134,7 @@
         <scene sceneID="9re-qR-zDn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xtC-UC-hrn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="discover" image="globe" catalog="system" id="vpW-bP-m4A"/>
+                    <tabBarItem key="tabBarItem" title="discover" image="magnifyingglass" catalog="system" id="vpW-bP-m4A"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3MP-2U-ChF">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -172,7 +172,7 @@
         <scene sceneID="JFG-kD-yWp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LF1-Ev-On7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="notification" image="bell.fill" catalog="system" id="z4D-EJ-BFc"/>
+                    <tabBarItem key="tabBarItem" title="notification" image="heart.fill" catalog="system" id="z4D-EJ-BFc"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t0Q-fc-tMY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -208,9 +208,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bell.fill" catalog="system" width="128" height="124"/>
-        <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="house" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
