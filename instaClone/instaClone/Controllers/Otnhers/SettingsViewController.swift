@@ -47,23 +47,35 @@ class SettingsViewController: UIViewController {
         data.append(section)
     }
     
+    //MARK: - didtapLogout()
     private func didtapLogout() {
-        AuthManager.shared.logOut { succes in
-            DispatchQueue.main.async {
-                if succes {
-                    //успешный выход из авторизации
-                    let vc = LoginViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true) {
-                        self.navigationController?.popToRootViewController(animated: true)
-                        self.tabBarController?.selectedIndex = 0
-                    }
-                } else {
-                    //error occured
-                
-              }
-           }
-        }
+        let sheet = UIAlertController(title: "Log out",
+                                      message: "Are you sure you want to log out",
+                                      preferredStyle: .actionSheet)
+        sheet.addAction(.init(title: "Cancel", style: .cancel, handler: nil))
+        sheet.addAction(.init(title: "Log out", style: .destructive, handler: { _ in
+            AuthManager.shared.logOut { succes in
+                DispatchQueue.main.async {
+                    if succes {
+                        //успешный выход из авторизации
+                        let vc = LoginViewController()
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true) {
+                            self.navigationController?.popToRootViewController(animated: true)
+                            self.tabBarController?.selectedIndex = 0
+                        }
+                    } else {
+                        //error occured
+                    print("Could not log out user")
+                  }
+               }
+            }
+        }))
+        //настройки для ipad
+        sheet.popoverPresentationController?.sourceView =  tableview
+        sheet.popoverPresentationController?.sourceRect =  tableview.bounds
+        
+        self.present(sheet, animated: true, completion: nil)
     }
 }
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
