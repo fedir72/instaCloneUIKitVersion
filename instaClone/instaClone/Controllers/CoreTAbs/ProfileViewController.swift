@@ -7,13 +7,23 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+///profile viewcontroller
+final class ProfileViewController: UIViewController {
+    
+    private var collectionView: UICollectionView?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
         configureNavBar()
+        setupCollectionView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView?.frame = view.bounds
     }
     
     private func configureNavBar() {
@@ -28,5 +38,40 @@ class ProfileViewController: UIViewController {
         vc.title = "Settings"
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    private func setupCollectionView() {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing =  2
+        layout.minimumInteritemSpacing = 2
+        layout.sectionInset = .init(top: 0, left: 2, bottom: 0, right: 2)
+        layout.itemSize = .init(width: view.width/3 - 3, height: view.width/3 - 3)
+        collectionView = .init(frame: .zero, collectionViewLayout: layout)
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView?.delegate = self
+        collectionView?.dataSource = self
+        
+        guard let collectionView = collectionView else { return }
+        view.addSubview(collectionView)
+    }
  
+}
+
+extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate,  UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = .systemRed
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+    
 }
