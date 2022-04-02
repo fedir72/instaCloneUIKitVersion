@@ -48,7 +48,15 @@ final class ProfileViewController: UIViewController {
         layout.sectionInset = .init(top: 0, left: 2, bottom: 0, right: 2)
         layout.itemSize = .init(width: view.width/3 - 3, height: view.width/3 - 3)
         collectionView = .init(frame: .zero, collectionViewLayout: layout)
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        //cell
+        collectionView?.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.id)
+        //headers
+        collectionView?.register(ProfileCollectionReusableView.self,
+                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                 withReuseIdentifier: ProfileCollectionReusableView.id)
+        collectionView?.register(ProfileTabsCollectionReusableView.self,
+                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                 withReuseIdentifier: ProfileTabsCollectionReusableView.id)
         collectionView?.delegate = self
         collectionView?.dataSource = self
         
@@ -61,11 +69,12 @@ final class ProfileViewController: UIViewController {
 extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDelegate,  UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.id,
+                                                                      for: indexPath) as! PhotoCollectionViewCell
         cell.backgroundColor = .systemRed
         return cell
     }

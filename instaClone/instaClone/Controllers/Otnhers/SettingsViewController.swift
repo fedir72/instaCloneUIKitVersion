@@ -129,8 +129,9 @@ class SettingsViewController: UIViewController {
     private func didtapEditPRofile() {
         let vc = EditProfileViewController()
         vc.title = "Edit profile"
-        present(UINavigationController(rootViewController: vc), animated: true)
-        
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true)
     }
     private func didtapInviteFriends() {
         //show share sheet to invite friends
@@ -140,6 +141,7 @@ class SettingsViewController: UIViewController {
     }
 }
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         data.count
@@ -163,5 +165,10 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         ///срабатывание функции в кложуре
         model.handler()
         
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      let v = UIView()
+        v.backgroundColor = .systemGray6
+        return v
     }
 }
