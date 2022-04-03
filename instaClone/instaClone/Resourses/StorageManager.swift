@@ -7,24 +7,12 @@
 
 import FirebaseStorage
 
-public struct PhotoPost {
-    let postType: UserPostType
-}
-
-public enum UserPostType {
-    case photo
-    case video
-}
-
-public enum IGStorageManagerError: Error {
-    case failedToDownload
-}
 
 class StorageManager {
     static let shared = StorageManager()
     private let bucket = Storage.storage().reference()
     
-    public func uploadUserPost(model: PhotoPost,
+    public func uploadUserPost(model: UserPost,
                                     completion: (Result<URL, Error>) -> Void) {
         
     }
