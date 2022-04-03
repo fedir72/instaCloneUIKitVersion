@@ -9,10 +9,10 @@ import UIKit
 
 class ProfileTabsCollectionReusableView: UICollectionReusableView {
     
-        static let id = "ProfileTabsCollectionReusableView"
+    static let id = "ProfileTabsCollectionReusableView"
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .orange
+        backgroundColor = .systemBackground
     }
     
     required init?(coder: NSCoder) {
