@@ -9,7 +9,7 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    private var data: [String]
+    private var data: [UserRelationShip]
     private let tableView: UITableView = {
         let tbl = UITableView()
         tbl.register(UserFollowTableViewCell.self,
@@ -17,7 +17,7 @@ class ListViewController: UIViewController {
         return tbl
     }()
     
-    init(data: [String]) {
+    init(data: [UserRelationShip]) {
         self.data = data
         super.init(nibName: nil, bundle: nil)
     }
@@ -49,14 +49,16 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        data.count
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = data[indexPath.row]
+    
         let cell = tableView.dequeueReusableCell(withIdentifier: UserFollowTableViewCell.id,
                                                  for: indexPath) as! UserFollowTableViewCell
+        let model = data[indexPath.row]
         cell.configure(with: model)
+        cell.delegate = self
         return cell
     }
     
@@ -65,13 +67,23 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         let item = data[indexPath.row]
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
 }
 
 //MARK: - UserFollowTableViewCellDelegate
 extension ListViewController: UserFollowTableViewCellDelegate {
-    func didTapFollowUnfollow(model: String) {
-        <#code#>
-    }
-    
-    
+    func didTapFollowUnfollow(model: UserRelationShip) {
+        switch model.type {
+            
+        case .following:
+            //perform firebase update to unfollow
+            break
+        case .not_following:
+            //perform firebase update to follow
+            break
+        }
+    }  
 }
