@@ -21,11 +21,13 @@ struct UserCount {
 
 public struct User{
     let userNAme: String
+    let bio: String
     let name: (first: String, second: String)
     let birdthdate: Date
     let gender: Gender
     var counts: UserCount
     let joinedDate: Date
+    let profilePhoto: URL
 }
 
 public struct UserPost {
