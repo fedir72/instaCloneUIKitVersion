@@ -47,7 +47,7 @@ class NotificationLikeEventTableViewCell: UITableViewCell {
         contentView.addSubview(profileImageView)
         contentView.addSubview(label)
         contentView.addSubview(postButton)
-        postButton.addTarget(self, action: #selector(didTapPostButton), for: .touchDragExit)
+        postButton.addTarget(self, action: #selector(didTapPostButton), for: .touchUpInside)
         selectionStyle = .none
     }
     

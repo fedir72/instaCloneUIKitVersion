@@ -6,7 +6,7 @@ target 'instaClone' do
   use_frameworks!
 
   # Pods for instaClone
-   pod 'SnapKit'
+   
    pod 'Appirater' 
    pod 'SDWebImage'
 

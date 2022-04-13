@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SnapKit
+ 
 
 enum UsernotificationType {
     case like(post: UserPost)
@@ -70,6 +70,15 @@ final class NotificationViewController: UIViewController{
     
     private func fetchNotification() {
         for x in 1...50 {
+            let user = User(userNAme: "Joe", bio: "Bio",
+                        name: (first: "Joe", second: "Smith"),
+                        birdthdate: Date(),
+                        gender: .male,
+                        counts: UserCount(folowers: 10,
+                                          following: 10,
+                                          posts: 111),
+                        joinedDate: Date(),
+                        profilePhoto: URL(string: "https://www.google.com/")!)
             let post = UserPost(identifire: "",
                                 postType: .photo,
                                 thumbnailImage: URL(string: "https://www.google.com/")!,
@@ -78,7 +87,8 @@ final class NotificationViewController: UIViewController{
                                 likeCount: [],
                                 comments: [],
                                 createdDate: Date(),
-                                    taggedusers: [])
+                                taggedusers: [],
+                                owner: user)
             let model = UserNotification(type: x%2 == 0 ? .like(post: post ) : .follow(state: .not_following),
                                          text: "Hello world",
                                          user: .init(userNAme: "Joe", bio: "Bio",
@@ -125,11 +135,6 @@ extension NotificationViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.row % 2 == 0 {
-//            return 80
-//        }else{
-//            return 50
-//        }
         return 54
     }
 }
@@ -139,6 +144,17 @@ extension NotificationViewController: NotificationLikeEventTablevieCellDelegate 
     func didTabRalatedPostButton(model: UserNotification) {
         print("tapped post")
         //open the post
+        switch model.type {
+            
+        case .like(post: let post):
+            let vc = PostViewController(model: post)
+            vc.title = post.postType.rawValue
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+        case .follow(_):
+             fatalError("Dev issue: Should never get called")
+        }
+        
     }
 }
 

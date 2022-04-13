@@ -40,6 +40,7 @@ public struct UserPost {
     let comments: [PostComment]
     let createdDate: Date
     let taggedusers: [String]
+    let owner: User
 }
 
 public struct PostComment {
@@ -60,9 +61,9 @@ public struct CommentLike {
     let commentIdentifire: String
 }
 
-public enum UserPostType {
-    case photo
-    case video
+public enum UserPostType: String {
+    case photo = "Photo"
+    case video = "Video"
 }
 
 public enum IGStorageManagerError: Error {
